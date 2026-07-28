@@ -1,0 +1,31 @@
+{
+  "tasks": {
+    "dev": "deno -P --env-file --watch main.ts",
+    "build": "deno -A scripts/build.ts",
+    "deploy": "deno -A scripts/deploy.ts"
+  },
+  "permissions": {
+    "default": {
+      "net": true,
+      "read": true,
+      "write": true,
+      "env": true
+    }
+  },
+  "imports": {
+    "@std/http": "jsr:@std/http@1",
+    "@std/path": "jsr:@std/path@1",
+    "preact": "npm:preact@10",
+    "preact-render-to-string": "npm:preact-render-to-string@6"
+  },
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "npm:preact"
+  },
+  "lint": {
+    "rules": {
+      "exclude": ["jsx-button-has-type"]
+    }
+  },
+  "lock": false
+}
