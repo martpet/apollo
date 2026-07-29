@@ -26,6 +26,5 @@
     "rules": {
       "exclude": ["jsx-button-has-type"]
     }
-  },
-  "lock": false
+  }
 }
