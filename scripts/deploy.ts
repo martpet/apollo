@@ -16,7 +16,7 @@ const timestamp = date.toISOString();
 const remoteHost = getRequiredEnv("REMOTE_HOST");
 const remoteBinary = getRequiredEnv("REMOTE_BINARY");
 const service = getRequiredEnv("SERVICE");
-const localBinary = `dist/${envName}`;
+const localBinary = `dist/bin-${envName}`;
 const remoteBinaryTemp = `${remoteBinary}_${timestamp}`;
 const envBadge = `[${envName.toUpperCase()}]`;
 

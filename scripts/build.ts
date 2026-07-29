@@ -12,7 +12,7 @@ await load({
 
 const appName = getRequiredEnv("APP_NAME");
 const targetPlatform = getRequiredEnv("TARGET_PLATFORM");
-const outputBinary = `dist/${envName}`;
+const outputBinary = `dist/bin-${envName}`;
 const envBadge = `[${envName.toUpperCase()}]`;
 
 console.time("✨ Total build time");
