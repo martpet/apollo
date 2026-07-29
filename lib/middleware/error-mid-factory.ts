@@ -1,5 +1,5 @@
+import { respondServerError } from "@lib/response/res-server-error.ts";
 import { type JSX } from "preact";
-import { respondServerError } from "../response/res_server_error.ts";
 import type { Middleware } from "../types.ts";
 
 export function creatErrorMiddleware(jsx: JSX.Element): Middleware {

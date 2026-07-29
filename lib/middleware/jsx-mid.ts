@@ -1,4 +1,4 @@
-import { respondHtml } from "../response/res_html.ts";
+import { respondHtml } from "@lib/response/res-html.ts";
 import type { MaybeJsxHandler, Middleware } from "../types.ts";
 
 export const jsxMiddleware: Middleware<MaybeJsxHandler> = (next) => {
