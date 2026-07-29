@@ -26,6 +26,8 @@ try {
     outputBinary,
     `--app-name=${appName}`,
     `--target=${targetPlatform}`,
+    "--include",
+    "app/", // needed for "assests/", check glob pattern support (https://github.com/denoland/deno/issues/35037)
     "app/main.ts",
   ]);
 
