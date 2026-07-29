@@ -1,4 +1,4 @@
-import { jsxMiddleware } from "./jsx_middleware.ts";
+import { jsxMiddleware } from "./middleware/jsx_mid.ts";
 import type { MaybeJsxHandler, Middleware } from "./types.ts";
 
 interface ServeOptions {

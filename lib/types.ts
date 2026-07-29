@@ -1,4 +1,4 @@
-import { VNode } from "preact";
+import type { VNode } from "preact";
 
 export type MaybePromise<T> = T | Promise<T>;
 

@@ -1,5 +1,5 @@
+import { serve } from "@lib/serve.ts";
 import { appHandler } from "./app/handler.tsx";
-import { serve } from "./lib/serve.ts";
 
 const PORT = Deno.env.get("PORT");
 
