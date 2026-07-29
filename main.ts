@@ -1,13 +1,10 @@
+import { getRequiredEnv } from "@lib/get-required-env.ts";
 import { serve } from "@lib/serve.ts";
 import { appHandler } from "./app/handler.tsx";
 
-const PORT = Deno.env.get("PORT");
-
-if (!PORT) {
-  throw new Error('Missing "PORT" env var!');
-}
+const port = getRequiredEnv("PORT");
 
 serve({
-  port: Number(PORT),
+  port: Number(port),
   handler: appHandler,
 });

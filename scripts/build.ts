@@ -1,7 +1,6 @@
+import { getRequiredEnv } from "@lib/get-required-env.ts";
 import { load } from "@std/dotenv";
-
 import { getEnvArg } from "./utils/get-env-arg.ts";
-import { getRequiredEnv } from "./utils/get-required-env.ts";
 import { runCommand } from "./utils/run-command.ts";
 
 const envName = getEnvArg();
