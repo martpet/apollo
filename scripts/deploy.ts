@@ -2,6 +2,7 @@ import { getEnvName } from "./utils/get-env-name.ts";
 import { runCommand } from "./utils/run-command.ts";
 
 const envName = getEnvName();
+const envTag = `[${envName.toUpperCase()}]`;
 const remoteHost = "apollo";
 const remoteBin = `/mnt/store/web/${envName}/bin`;
 const service = `web.${envName}`;
@@ -15,7 +16,7 @@ try {
   Deno.exit(1);
 }
 
-console.log(`🚀 Starting deployment to [${envName.toUpperCase()}]...`);
+console.log(`🚀 Starting deployment to ${envTag}...`);
 console.time("✨ Total deployment time");
 
 try {
@@ -40,7 +41,7 @@ try {
   ]);
 
   console.log(
-    `✅ Deployment to [${envName.toUpperCase()}] completed successfully!`,
+    `✅ Deployment to ${envTag} completed successfully!`,
   );
 } catch (error) {
   console.error(`❌ Deployment failed!`, error);
