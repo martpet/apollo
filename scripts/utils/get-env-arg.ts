@@ -12,12 +12,12 @@ const listFormat = new Intl.ListFormat("en", {
   type: "disjunction",
 });
 
-export function getEnvName() {
+export function getEnvArg() {
   const envName = Deno.args[0] ?? defaultEnv;
 
   if (!isEnv(envName)) {
     const envList = listFormat.format(envs.map((it) => `'${it}'`));
-    const msg = `Error: Invalid environment '${envName}'. Must be ${envList}.`;
+    const msg = `Error: Invalid env argument '${envName}'. Must be ${envList}.`;
     console.error(msg);
     Deno.exit(1);
   }

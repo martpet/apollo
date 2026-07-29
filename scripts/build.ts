@@ -1,28 +1,37 @@
-import { getEnvName } from "./utils/get-env-name.ts";
+import { load } from "@std/dotenv";
+
+import { getEnvArg } from "./utils/get-env-arg.ts";
+import { getRequiredEnv } from "./utils/get-required-env.ts";
 import { runCommand } from "./utils/run-command.ts";
 
-const envName = getEnvName();
-const envTag = `[${envName.toUpperCase()}]`;
-const appName = `apollo.${envName}`;
-const outputFile = `dist/${envName}`;
+const envName = getEnvArg();
 
-console.log(`🔨 Building binary for ${envTag}...`);
+await load({
+  envPath: `scripts/env/.env.build.${envName}`,
+  export: true,
+});
+
+const appName = getRequiredEnv("APP_NAME");
+const targetPlatform = getRequiredEnv("TARGET_PLATFORM");
+const outputBinary = `dist/${envName}`;
+const envBadge = `[${envName.toUpperCase()}]`;
+
 console.time("✨ Total build time");
+console.log(`🔨 Building binary for ${envBadge}...`);
 
 try {
   await runCommand("deno", [
     "compile",
     "-P",
     "-o",
-    outputFile,
-    "--app-name",
-    appName,
-    "--target=aarch64-unknown-linux-gnu",
+    outputBinary,
+    `--app-name=${appName}`,
+    `--target=${targetPlatform}`,
     "main.ts",
   ]);
 
   console.log(
-    `✅ Build for ${envTag} finished successfully! Output file: '${outputFile}'`,
+    `✅ Build for ${envBadge} finished successfully! Output binary: '${outputBinary}'`,
   );
 } catch (error) {
   console.error(`❌ Build failed!`, error);

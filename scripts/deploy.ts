@@ -1,31 +1,39 @@
-import { getEnvName } from "./utils/get-env-name.ts";
+import { load } from "@std/dotenv";
+import { getEnvArg } from "./utils/get-env-arg.ts";
+import { getRequiredEnv } from "./utils/get-required-env.ts";
 import { runCommand } from "./utils/run-command.ts";
 
-const envName = getEnvName();
-const envTag = `[${envName.toUpperCase()}]`;
-const remoteHost = "apollo";
-const remoteBin = `/mnt/store/web/${envName}/bin`;
-const service = `web.${envName}`;
-const localBin = `dist/${envName}`;
+const envName = getEnvArg();
+
+await load({
+  envPath: `scripts/env/.env.deploy.${envName}`,
+  export: true,
+});
+
+const remoteHost = getRequiredEnv("REMOTE_HOST");
+const remoteBinary = getRequiredEnv("REMOTE_BINARY");
+const service = getRequiredEnv("SERVICE");
+const localBinary = `dist/${envName}`;
+const envBadge = `[${envName.toUpperCase()}]`;
 
 try {
-  const fileInfo = await Deno.stat(localBin);
+  const fileInfo = await Deno.stat(localBinary);
   if (!fileInfo.isFile) throw new Error();
 } catch {
-  console.error(`Error: File '${localBin}' doesn't exist!`);
+  console.error(`Error: File '${localBinary}' doesn't exist!`);
   Deno.exit(1);
 }
 
-console.log(`🚀 Starting deployment to ${envTag}...`);
+console.log(`🚀 Starting deployment to ${envBadge}...`);
 console.time("✨ Total deployment time");
 
 try {
   console.log(
-    `📦 Copying '${localBin}' to '${remoteHost}:${remoteBin}_new'...`,
+    `📦 Copying '${localBinary}' to '${remoteHost}:${remoteBinary}_new'...`,
   );
   await runCommand("scp", [
-    localBin,
-    `${remoteHost}:${remoteBin}_new`,
+    localBinary,
+    `${remoteHost}:${remoteBinary}_new`,
   ]);
 
   console.log(
@@ -35,13 +43,13 @@ try {
     "-n",
     remoteHost,
     `
-      mv ${remoteBin}_new ${remoteBin}
+      mv ${remoteBinary}_new ${remoteBinary}
       sudo systemctl restart ${service}
     `,
   ]);
 
   console.log(
-    `✅ Deployment to ${envTag} completed successfully!`,
+    `✅ Deployment to ${envBadge} completed successfully!`,
   );
 } catch (error) {
   console.error(`❌ Deployment failed!`, error);
