@@ -5,6 +5,7 @@ export type MaybePromise<T> = T | Promise<T>;
 export interface Context {
   req: Request;
   url: URL;
+  error?: Error;
 }
 
 export type Handler<T = Response> = (ctx: Context) => MaybePromise<T>;

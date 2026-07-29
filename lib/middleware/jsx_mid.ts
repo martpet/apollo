@@ -2,13 +2,13 @@ import { respondHtml } from "../response/res_html.ts";
 import type { MaybeJsxHandler, Middleware } from "../types.ts";
 
 export const jsxMiddleware: Middleware<MaybeJsxHandler> = (next) => {
-  return async (req) => {
-    const res = await next(req);
+  return async (ctx) => {
+    const jsxOrRes = await next(ctx);
 
-    if (res instanceof Response) {
-      return res;
+    if (jsxOrRes instanceof Response) {
+      return jsxOrRes;
     }
 
-    return respondHtml(res);
+    return respondHtml({ jsx: jsxOrRes, ctx });
   };
 };

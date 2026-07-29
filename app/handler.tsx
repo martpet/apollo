@@ -15,7 +15,7 @@ export function appHandler(ctx: Context) {
 
   if (pathname === "/") {
     if (method !== "GET") return respondMethodAllowed("GET");
-    return <HomePage url={url} />;
+    return <HomePage />;
   }
 
   return respondPageNotFound(ctx);

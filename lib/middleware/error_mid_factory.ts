@@ -7,8 +7,11 @@ export function creatErrorMiddleware(jsx: JSX.Element): Middleware {
     try {
       const resp = await next(ctx);
       return resp;
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
+      if (error instanceof Error) {
+        ctx.error = error;
+      }
       return respondServerError(ctx, jsx);
     }
   };
