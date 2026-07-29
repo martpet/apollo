@@ -1,11 +1,11 @@
-import { getEnvArg } from "./utils/get-env.ts";
+import { getEnvName } from "./utils/get-env-name.ts";
 import { runCommand } from "./utils/run-command.ts";
 
-const env = getEnvArg();
+const envName = getEnvName();
 const remoteHost = "apollo";
-const remoteBin = `/mnt/store/web/${env}/bin`;
-const service = `web.${env}`;
-const localBin = `dist/${env}`;
+const remoteBin = `/mnt/store/web/${envName}/bin`;
+const service = `web.${envName}`;
+const localBin = `dist/${envName}`;
 
 try {
   const fileInfo = await Deno.stat(localBin);
@@ -15,7 +15,7 @@ try {
   Deno.exit(1);
 }
 
-console.log(`🚀 Starting deployment to [${env.toUpperCase()}]...`);
+console.log(`🚀 Starting deployment to [${envName.toUpperCase()}]...`);
 console.time("✨ Total deployment time");
 
 try {
@@ -40,7 +40,7 @@ try {
   ]);
 
   console.log(
-    `✅ Deployment to [${env.toUpperCase()}] completed successfully!`,
+    `✅ Deployment to [${envName.toUpperCase()}] completed successfully!`,
   );
 } catch (error) {
   console.error(`❌ Deployment failed!`, error);

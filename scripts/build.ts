@@ -1,11 +1,11 @@
-import { getEnvArg } from "./utils/get-env.ts";
+import { getEnvName } from "./utils/get-env-name.ts";
 import { runCommand } from "./utils/run-command.ts";
 
-const env = getEnvArg();
-const appName = `apollo.${env}`;
-const targetFile = `dist/${env}`;
+const envName = getEnvName();
+const appName = `apollo.${envName}`;
+const targetFile = `dist/${envName}`;
 
-console.log(`🔨 Building binary for [${env.toUpperCase()}]...`);
+console.log(`🔨 Building binary for [${envName.toUpperCase()}]...`);
 console.time("✨ Total build time");
 
 try {
@@ -21,7 +21,7 @@ try {
   ]);
 
   console.log(
-    `✅ Build for [${env.toUpperCase()}] finished successfully! Target file: '${targetFile}'`,
+    `✅ Build for [${envName.toUpperCase()}] finished successfully! Target file: '${targetFile}'`,
   );
 } catch (error) {
   console.error(`❌ Build failed!`, error);
