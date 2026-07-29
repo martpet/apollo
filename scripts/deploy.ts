@@ -10,10 +10,14 @@ await load({
   export: true,
 });
 
+const date = new Date();
+const timestamp = date.toISOString();
+
 const remoteHost = getRequiredEnv("REMOTE_HOST");
 const remoteBinary = getRequiredEnv("REMOTE_BINARY");
 const service = getRequiredEnv("SERVICE");
 const localBinary = `dist/${envName}`;
+const remoteBinaryTemp = `${remoteBinary}_${timestamp}`;
 const envBadge = `[${envName.toUpperCase()}]`;
 
 try {
@@ -29,11 +33,12 @@ console.time("✨ Total deployment time");
 
 try {
   console.log(
-    `📦 Copying '${localBinary}' to '${remoteHost}:${remoteBinary}_new'...`,
+    `📦 Copying '${localBinary}' to '${remoteHost}:${remoteBinaryTemp}'...`,
   );
+
   await runCommand("scp", [
     localBinary,
-    `${remoteHost}:${remoteBinary}_new`,
+    `${remoteHost}:${remoteBinaryTemp}`,
   ]);
 
   console.log(
@@ -43,7 +48,7 @@ try {
     "-n",
     remoteHost,
     `
-      mv ${remoteBinary}_new ${remoteBinary}
+      mv ${remoteBinaryTemp} ${remoteBinary}
       sudo systemctl restart ${service}
     `,
   ]);
