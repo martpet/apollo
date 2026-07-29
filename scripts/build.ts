@@ -26,7 +26,7 @@ try {
     outputBinary,
     `--app-name=${appName}`,
     `--target=${targetPlatform}`,
-    "main.ts",
+    "src/main.ts",
   ]);
 
   console.log(
