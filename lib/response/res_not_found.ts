@@ -1,5 +1,5 @@
-import { checkAcceptHtml } from "@lib/request/accept_html.ts";
 import type { JSX } from "preact";
+import { checkAcceptHtml } from "../request/accept_html.ts";
 import type { Context } from "../types.ts";
 import { respondHtml } from "./res_html.ts";
 
