@@ -3,7 +3,7 @@ import { runCommand } from "./utils/run-command.ts";
 
 const envName = getEnvName();
 const appName = `apollo.${envName}`;
-const targetFile = `dist/${envName}`;
+const outputFile = `dist/${envName}`;
 
 console.log(`🔨 Building binary for [${envName.toUpperCase()}]...`);
 console.time("✨ Total build time");
@@ -13,7 +13,7 @@ try {
     "compile",
     "-P",
     "-o",
-    targetFile,
+    outputFile,
     "--app-name",
     appName,
     "--target=aarch64-unknown-linux-gnu",
@@ -21,7 +21,7 @@ try {
   ]);
 
   console.log(
-    `✅ Build for [${envName.toUpperCase()}] finished successfully! Target file: '${targetFile}'`,
+    `✅ Build for [${envName.toUpperCase()}] finished successfully! Output file: '${outputFile}'`,
   );
 } catch (error) {
   console.error(`❌ Build failed!`, error);
