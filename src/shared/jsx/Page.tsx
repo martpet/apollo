@@ -1,4 +1,4 @@
-import type { ComponentChildren, JSX } from "preact";
+import { ComponentChildren, JSX } from "preact";
 
 interface PageProps {
   htmlHead?: JSX.Element;

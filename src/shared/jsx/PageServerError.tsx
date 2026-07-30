@@ -1,5 +1,5 @@
-import { getRequiredEnv } from "@lib/required-env.ts";
-import type { Context } from "@lib/types.ts";
+import { Context } from "@serve";
+import { getRequiredEnv } from "@utils";
 import { Page } from "./Page.tsx";
 
 export function PageServerError(_props: unknown, { error }: Context) {

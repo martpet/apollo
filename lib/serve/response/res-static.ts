@@ -1,6 +1,6 @@
 import { serveFile } from "@std/http";
 import { basename, join } from "@std/path";
-import type { Context } from "../types.ts";
+import { Context } from "../types.ts";
 
 export function respondStatic(ctx: Context, meta: ImportMeta) {
   const fileName = basename(ctx.url.pathname);

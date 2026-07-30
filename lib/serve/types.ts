@@ -1,6 +1,5 @@
-import type { VNode } from "preact";
-
-export type MaybePromise<T> = T | Promise<T>;
+import { MaybePromise } from "@utils";
+import { VNode } from "preact";
 
 export interface Context {
   req: Request;

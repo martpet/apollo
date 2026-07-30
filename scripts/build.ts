@@ -1,5 +1,5 @@
-import { getRequiredEnv } from "@lib/required-env.ts";
 import { load } from "@std/dotenv";
+import { getRequiredEnv } from "@utils";
 import { getEnvArg } from "./utils/env-arg.ts";
 import { runCommand } from "./utils/run-command.ts";
 

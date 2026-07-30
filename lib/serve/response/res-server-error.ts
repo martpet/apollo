@@ -1,6 +1,6 @@
-import type { JSX } from "preact";
+import { JSX } from "preact";
 import { checkAcceptHtml } from "../request/accept-html.ts";
-import type { Context } from "../types.ts";
+import { Context } from "../types.ts";
 import { respondHtml } from "./res-html.ts";
 
 export function respondServerError(ctx: Context, jsx?: JSX.Element) {
