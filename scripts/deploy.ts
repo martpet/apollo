@@ -1,6 +1,7 @@
-import { getRequiredEnv } from "@lib/get-required-env.ts";
+import { getRequiredEnv } from "@lib/required-env-var.ts";
 import { load } from "@std/dotenv";
-import { getEnvArg } from "./utils/get-env-arg.ts";
+import { exists } from "@std/fs/exists";
+import { getEnvArg } from "./utils/env-arg.ts";
 import { runCommand } from "./utils/run-command.ts";
 
 const envName = getEnvArg();
@@ -10,21 +11,15 @@ await load({
   export: true,
 });
 
-const date = new Date();
-const timestamp = date.toISOString();
-
 const remoteHost = getRequiredEnv("REMOTE_HOST");
 const remoteBinary = getRequiredEnv("REMOTE_BINARY");
 const service = getRequiredEnv("SERVICE");
+const remoteBinaryTemp = `${remoteBinary}_${(new Date()).toISOString()}`;
 const localBinary = `dist/bin-${envName}`;
-const remoteBinaryTemp = `${remoteBinary}_${timestamp}`;
 const envBadge = `[${envName.toUpperCase()}]`;
 
-try {
-  const fileInfo = await Deno.stat(localBinary);
-  if (!fileInfo.isFile) throw new Error();
-} catch {
-  console.error(`Error: File '${localBinary}' doesn't exist!`);
+if (!await exists(localBinary)) {
+  console.log(`Error: File '${localBinary}' doesn't exist!`);
   Deno.exit(1);
 }
 
@@ -42,7 +37,7 @@ try {
   ]);
 
   console.log(
-    `⚙️ Updating file and restarting '${service}' service on '${remoteHost}'...`,
+    `⚙️  Updating file and restarting '${service}' service on '${remoteHost}'...`,
   );
   await runCommand("ssh", [
     "-n",

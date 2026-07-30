@@ -1,4 +1,4 @@
-import { getRequiredEnv } from "@lib/get-required-env.ts";
+import { getRequiredEnv } from "@lib/required-env-var.ts";
 import type { Context } from "@lib/types.ts";
 import { Page } from "./Page.tsx";
 

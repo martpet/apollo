@@ -2,6 +2,7 @@
   "version": "5",
   "specifiers": {
     "jsr:@std/dotenv@0": "0.225.7",
+    "jsr:@std/fs@1": "1.0.24",
     "npm:preact-render-to-string@6": "6.7.0_preact@10.29.7",
     "npm:preact@*": "10.29.7_preact-render-to-string@6.7.0",
     "npm:preact@10": "10.29.7_preact-render-to-string@6.7.0"
@@ -9,6 +10,9 @@
   "jsr": {
     "@std/dotenv@0.225.7": {
       "integrity": "11d8db03ca4ad5aba9eba809f2e8058b2a4f320b7b09fea4b360e162928329e3"
+    },
+    "@std/fs@1.0.24": {
+      "integrity": "f3061b45b81673a2bece689da041df32d174be064c89eb6397fb5718d3fb7877"
     }
   },
   "npm": {
@@ -31,6 +35,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@std/dotenv@0",
+      "jsr:@std/fs@1",
       "jsr:@std/http@1",
       "jsr:@std/path@1",
       "npm:preact-render-to-string@6",

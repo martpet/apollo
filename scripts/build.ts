@@ -1,6 +1,6 @@
-import { getRequiredEnv } from "@lib/get-required-env.ts";
+import { getRequiredEnv } from "@lib/required-env-var.ts";
 import { load } from "@std/dotenv";
-import { getEnvArg } from "./utils/get-env-arg.ts";
+import { getEnvArg } from "./utils/env-arg.ts";
 import { runCommand } from "./utils/run-command.ts";
 
 const envName = getEnvArg();
@@ -27,7 +27,7 @@ try {
     `--app-name=${appName}`,
     `--target=${targetPlatform}`,
     "--include",
-    "app/", // needed for "assests/", check glob pattern support (https://github.com/denoland/deno/issues/35037)
+    "app/", // needed for "assests/" (glob pattern https://github.com/denoland/deno/issues/35037)
     "app/main.ts",
   ]);
 
