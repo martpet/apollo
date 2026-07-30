@@ -1,6 +1,6 @@
-import { Context } from "@lib/types.ts";
 import { type JSX } from "preact";
 import { renderToString } from "preact-render-to-string";
+import { Context } from "../types.ts";
 
 interface RespondHtmlOptions {
   jsx: JSX.Element;

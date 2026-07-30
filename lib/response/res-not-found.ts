@@ -1,7 +1,7 @@
-import { checkAcceptHtml } from "@lib/request/accept-html.ts";
-import { respondHtml } from "@lib/response/res-html.ts";
 import type { JSX } from "preact";
+import { checkAcceptHtml } from "../request/accept-html.ts";
 import type { Context } from "../types.ts";
+import { respondHtml } from "./res-html.ts";
 
 export function respondNotFound(ctx: Context, jsx?: JSX.Element) {
   const resInit = { status: 404 };
