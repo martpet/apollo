@@ -39,6 +39,7 @@ try {
   console.log(
     `⚙️  Updating file and restarting '${service}' service on '${remoteHost}'...`,
   );
+
   await runCommand("ssh", [
     "-n",
     remoteHost,
