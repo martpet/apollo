@@ -27,8 +27,8 @@ try {
     `--app-name=${appName}`,
     `--target=${targetPlatform}`,
     "--include",
-    "app/", // needed for "assests/" (glob pattern https://github.com/denoland/deno/issues/35037)
-    "app/main.ts",
+    "src/", // needed for "assests/" (glob pattern https://github.com/denoland/deno/issues/35037)
+    "src/main.ts",
   ]);
 
   console.log(
