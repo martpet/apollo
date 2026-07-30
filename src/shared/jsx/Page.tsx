@@ -11,6 +11,7 @@ export function Page({ htmlHead, children }: PageProps) {
       <head>
         <meta name="color-scheme" content="dark light" />
         <link rel="icon" href="/assets/favicon.png" type="image/png" />
+        <link rel="stylesheet" href="/assets/main.css" />
         {htmlHead}
       </head>
       <body>{children}</body>
