@@ -1,4 +1,4 @@
-import { getRequiredEnv } from "@lib/required-env-var.ts";
+import { getRequiredEnv } from "@lib/required-env.ts";
 import { load } from "@std/dotenv";
 import { exists } from "@std/fs/exists";
 import { getEnvArg } from "./utils/env-arg.ts";
