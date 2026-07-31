@@ -4,7 +4,7 @@ export function HomePage() {
   return (
     <Page>
       <h1>Hello</h1>
-      <a href="/registration">Register</a>
+      <a href="/account/create">Create an account</a>
     </Page>
   );
 }

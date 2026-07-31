@@ -1,10 +1,12 @@
-import { Context, respondMethodAllowed } from "@lib/serve";
-import { RegistrationPage } from "./RegistrationPage.tsx";
+import { Context, respondStatic } from "@lib/serve";
+import { CreateAccountPage } from "./CreateAccountPage.tsx";
 
-export function accountHandler({ req }: Context) {
-  if (req.method !== "GET") {
-    return respondMethodAllowed("GET");
+export function accountHandler(ctx: Context) {
+  const { pathname } = ctx.url;
+
+  if (pathname.includes("/assets/")) {
+    return respondStatic(ctx, import.meta);
   }
 
-  return <RegistrationPage />;
+  return <CreateAccountPage />;
 }

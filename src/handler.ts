@@ -10,7 +10,7 @@ export function mainHandler(ctx: Context) {
     return homepageHandler(ctx);
   }
 
-  if (pathname === "/registration") {
+  if (pathname.startsWith("/account/")) {
     return accountHandler(ctx);
   }
 
