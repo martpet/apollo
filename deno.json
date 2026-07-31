@@ -13,8 +13,8 @@
     }
   },
   "imports": {
-    "@serve": "./lib/serve/mod.ts",
-    "@utils": "./lib/utils/mod.ts",
+    "@lib/serve": "./lib/serve/mod.ts",
+    "@lib/utils": "./lib/utils/mod.ts",
     "@std/fs": "jsr:@std/fs@^1",
     "@std/http": "jsr:@std/http@1",
     "@std/path": "jsr:@std/path@1",

@@ -1,4 +1,4 @@
-import { Context, respondNotFound } from "@serve";
+import { Context, respondNotFound } from "@lib/serve";
 import { PageNotFound } from "./jsx/PageNotFound.tsx";
 
 export function respondPageNotFound(ctx: Context) {

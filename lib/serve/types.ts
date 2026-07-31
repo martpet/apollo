@@ -1,4 +1,4 @@
-import { MaybePromise } from "@utils";
+import { MaybePromise } from "@lib/utils";
 import { VNode } from "preact";
 
 export interface Context {

@@ -1,4 +1,4 @@
-import { Context, respondMethodAllowed } from "@serve";
+import { Context, respondMethodAllowed } from "@lib/serve";
 import { RegistrationPage } from "./RegistrationPage.tsx";
 
 export function accountHandler({ req }: Context) {

@@ -1,4 +1,4 @@
-import { Context, respondStatic } from "@serve";
+import { Context, respondStatic } from "@lib/serve";
 import { accountHandler } from "./features/account/handler.tsx";
 import { homepageHandler } from "./features/homepage/handler.tsx";
 import { respondPageNotFound } from "./shared/res-not-found.tsx";

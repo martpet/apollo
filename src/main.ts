@@ -1,5 +1,5 @@
-import { createErrorMiddleware, serve } from "@serve";
-import { getRequiredEnv } from "@utils";
+import { createErrorMiddleware, serve } from "@lib/serve";
+import { getRequiredEnv } from "@lib/utils";
 import { mainHandler } from "./handler.ts";
 import { PageServerError } from "./shared/jsx/PageServerError.tsx";
 
