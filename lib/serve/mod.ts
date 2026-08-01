@@ -1,4 +1,5 @@
 export * from "./handlers/asset-handler.ts";
+export * from "./middleware/cache-mid.ts";
 export * from "./middleware/error-mid-factory.tsx";
 export * from "./middleware/jsx-mid.ts";
 export * from "./request/accept-html.ts";
