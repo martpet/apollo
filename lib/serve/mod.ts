@@ -5,6 +5,7 @@ export * from "./request/accept-html.ts";
 export * from "./response/res-html.ts";
 export * from "./response/res-method-allowed.ts";
 export * from "./response/res-not-found.ts";
+export * from "./response/res-not-implemented.ts";
 export * from "./response/res-server-error.ts";
 export * from "./serve.ts";
 export * from "./types.ts";

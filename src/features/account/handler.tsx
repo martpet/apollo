@@ -1,4 +1,9 @@
-import { Context, handleAsset, respondMethodAllowed } from "@lib/serve";
+import {
+  Context,
+  handleAsset,
+  respondMethodAllowed,
+  respondNotImplemented,
+} from "@lib/serve";
 import { handleNotFound } from "../../shared/handlers/handle-not-found.tsx";
 import { CreateAccountPage } from "./CreateAccountPage.tsx";
 
@@ -13,8 +18,10 @@ export function handleAccount(ctx: Context) {
   if (pathname === "/account/create") {
     if (method === "GET") {
       return <CreateAccountPage />;
+    } else if (method === "PUT") {
+      return respondNotImplemented();
     } else {
-      return respondMethodAllowed("GET");
+      return respondMethodAllowed("GET", "PUT");
     }
   }
 
