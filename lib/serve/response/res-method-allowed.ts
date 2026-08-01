@@ -1,10 +1,9 @@
-export function respondMethodAllowed(...methods: ("GET" | "POST")[]) {
-  const resInit = {
-    status: 405,
-    headers: {
-      Allow: methods.join(", "),
-    },
-  };
+import { STATUS_CODE, STATUS_TEXT } from "@std/http";
+import { Method } from "@std/http/unstable-method";
 
-  return new Response("Method Not Allowed", resInit);
+export function respondMethodAllowed(...methods: Method[]) {
+  const headers = { Allow: methods.join(", ") };
+  const status = STATUS_CODE.MethodNotAllowed;
+
+  return new Response(STATUS_TEXT[status], { headers, status });
 }

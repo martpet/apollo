@@ -1,19 +1,20 @@
+import { StatusCode } from "@std/http";
+import { HEADER } from "@std/http/unstable-header";
 import { JSX } from "preact";
 import { renderToString } from "preact-render-to-string";
 import { Context } from "../types.ts";
 
-interface RespondHtmlOptions {
-  jsx: JSX.Element;
+export interface RespondHtmlOptions {
+  html: JSX.Element | string;
   ctx: Context;
-  resInit?: ResponseInit;
+  status?: StatusCode;
 }
 
-export function respondHtml({ jsx, ctx, resInit = {} }: RespondHtmlOptions) {
-  resInit.headers = new Headers(resInit.headers);
-  resInit.headers.set("content-type", "text/html; charset=utf-8");
+export function respondHtml({ html, ctx, status }: RespondHtmlOptions) {
+  const headers = { [HEADER.ContentType]: 'text/html; charset=utf-8"' };
 
-  return new Response(
-    "<!DOCTYPE html>" + renderToString(jsx, ctx),
-    resInit,
-  );
+  const body = "<!DOCTYPE html>" +
+    (typeof html === "string" ? html : renderToString(html, ctx));
+
+  return new Response(body, { headers, status });
 }

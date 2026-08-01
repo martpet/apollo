@@ -1,3 +1,4 @@
+export * from "./handlers/asset-handler.ts";
 export * from "./middleware/error-mid-factory.tsx";
 export * from "./middleware/jsx-mid.ts";
 export * from "./request/accept-html.ts";
@@ -5,6 +6,5 @@ export * from "./response/res-html.ts";
 export * from "./response/res-method-allowed.ts";
 export * from "./response/res-not-found.ts";
 export * from "./response/res-server-error.ts";
-export * from "./response/res-static.ts";
 export * from "./serve.ts";
 export * from "./types.ts";

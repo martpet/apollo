@@ -2,7 +2,7 @@ import { Context } from "@lib/serve";
 import { getRequiredEnv } from "@lib/utils";
 import { Page } from "./Page.tsx";
 
-export function PageServerError(_props: unknown, { error }: Context) {
+export function ServerErrorPage(_props: unknown, { error }: Context) {
   const envName = getRequiredEnv("ENV");
 
   return (

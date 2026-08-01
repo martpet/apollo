@@ -1,12 +1,10 @@
-import { JSX } from "preact";
-import { checkAcceptHtml } from "../request/accept-html.ts";
-import { Context } from "../types.ts";
-import { respondHtml } from "./res-html.ts";
+import { STATUS_CODE } from "@std/http";
+import { respondHtmlMaybe, RespondHtmlMaybeOptions } from "./res-html-maybe.ts";
 
-export function respondNotFound(ctx: Context, jsx?: JSX.Element) {
-  const resInit = { status: 404 };
+export function respondNotFound(
+  options: Omit<RespondHtmlMaybeOptions, "status">,
+) {
+  const status = STATUS_CODE.NotFound;
 
-  return jsx && checkAcceptHtml(ctx.req)
-    ? respondHtml({ jsx, ctx, resInit })
-    : new Response("Not Found", resInit);
+  return respondHtmlMaybe({ ...options, status });
 }

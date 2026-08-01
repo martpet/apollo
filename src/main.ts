@@ -1,14 +1,14 @@
 import { createErrorMiddleware, serve } from "@lib/serve";
 import { getRequiredEnv } from "@lib/utils";
-import { mainHandler } from "./handler.ts";
-import { PageServerError } from "./shared/jsx/PageServerError.tsx";
+import { defaultHandler } from "./handler.ts";
+import { ServerErrorPage } from "./shared/jsx/ServerErrorPage.tsx";
 
 const port = getRequiredEnv("PORT");
 
-const errorMid = createErrorMiddleware(PageServerError);
+const errorMid = createErrorMiddleware(ServerErrorPage);
 
 serve({
   port: Number(port),
-  handler: mainHandler,
+  handler: defaultHandler,
   middlewares: [errorMid],
 });

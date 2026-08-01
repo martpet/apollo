@@ -1,12 +1,10 @@
-import { JSX } from "preact";
-import { checkAcceptHtml } from "../request/accept-html.ts";
-import { Context } from "../types.ts";
-import { respondHtml } from "./res-html.ts";
+import { STATUS_CODE } from "@std/http";
+import { respondHtmlMaybe, RespondHtmlMaybeOptions } from "./res-html-maybe.ts";
 
-export function respondServerError(ctx: Context, jsx?: JSX.Element) {
-  const resInit = { status: 500 };
+export function respondServerError(
+  options: Omit<RespondHtmlMaybeOptions, "status">,
+) {
+  const status = STATUS_CODE.InternalServerError;
 
-  return jsx && checkAcceptHtml(ctx.req)
-    ? respondHtml({ jsx, ctx, resInit })
-    : new Response("Internal Server Error", resInit);
+  return respondHtmlMaybe({ ...options, status });
 }

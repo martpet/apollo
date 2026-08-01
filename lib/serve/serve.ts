@@ -1,9 +1,10 @@
+import { Method } from "@std/http/unstable-method";
 import { jsxMid } from "./middleware/jsx-mid.ts";
-import { MaybeJsxHandler, Middleware } from "./types.ts";
+import { JsxMaybeHandler, Middleware } from "./types.ts";
 
 interface ServeOptions {
   port: number;
-  handler: MaybeJsxHandler;
+  handler: JsxMaybeHandler;
   middlewares?: Middleware[];
 }
 
@@ -17,6 +18,7 @@ export function serve({ port, handler, middlewares = [] }: ServeOptions) {
     const context = {
       req,
       url: new URL(req.url),
+      method: req.method as Method,
     };
 
     return composed(context);

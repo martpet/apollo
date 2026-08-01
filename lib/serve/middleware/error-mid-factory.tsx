@@ -7,12 +7,12 @@ export function createErrorMiddleware(FC: FunctionComponent): Middleware {
     try {
       const res = await next(ctx);
       return res;
-    } catch (error) {
-      console.log(error);
-      if (error instanceof Error) {
-        ctx.error = error;
+    } catch (err) {
+      console.log(err);
+      if (err instanceof Error) {
+        ctx.error = err;
       }
-      return respondServerError(ctx, <FC />);
+      return respondServerError({ ctx, html: <FC /> });
     }
   };
 }

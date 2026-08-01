@@ -1,12 +1,22 @@
-import { Context, respondStatic } from "@lib/serve";
+import { Context, handleAsset, respondMethodAllowed } from "@lib/serve";
+import { handleNotFound } from "../../shared/handlers/handle-not-found.tsx";
 import { CreateAccountPage } from "./CreateAccountPage.tsx";
 
-export function accountHandler(ctx: Context) {
+export function handleAccount(ctx: Context) {
+  const { method } = ctx;
   const { pathname } = ctx.url;
 
   if (pathname.includes("/assets/")) {
-    return respondStatic(ctx, import.meta);
+    return handleAsset(ctx, import.meta);
   }
 
-  return <CreateAccountPage />;
+  if (pathname === "/account/create") {
+    if (method === "GET") {
+      return <CreateAccountPage />;
+    } else {
+      return respondMethodAllowed("GET");
+    }
+  }
+
+  return handleNotFound(ctx);
 }
