@@ -1,4 +1,4 @@
-import { Page } from "../../shared/jsx/Page.tsx";
+import { Page } from "@/shared/jsx/Page.tsx";
 
 export function HomePage() {
   return (

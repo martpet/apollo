@@ -1,7 +1,7 @@
+import { ServerErrorPage } from "@/shared/jsx/ServerErrorPage.tsx";
 import { createErrorMiddleware, serve } from "@lib/serve";
 import { getRequiredEnv } from "@lib/utils";
 import { defaultHandler } from "./handler.ts";
-import { ServerErrorPage } from "./shared/jsx/ServerErrorPage.tsx";
 
 const port = getRequiredEnv("PORT");
 

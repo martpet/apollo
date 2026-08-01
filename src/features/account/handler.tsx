@@ -1,10 +1,10 @@
+import { handleNotFound } from "@/shared/handlers/not-found.tsx";
 import {
   Context,
   handleAsset,
   respondMethodAllowed,
   respondNotImplemented,
 } from "@lib/serve";
-import { handleNotFound } from "../../shared/handlers/handle-not-found.tsx";
 import { CreateAccountPage } from "./CreateAccountPage.tsx";
 
 export function handleAccount(ctx: Context) {
