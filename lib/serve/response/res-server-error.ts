@@ -2,11 +2,11 @@ import { STATUS_CODE } from "@std/http";
 import { ServerErrorContext } from "../types.ts";
 import { respondHtmlMaybe, RespondHtmlMaybeOptions } from "./res-html-maybe.ts";
 
-type RespondServerError =
+export type RespondServerErrorOptions =
   & Omit<RespondHtmlMaybeOptions, "status" | "ctx">
   & { ctx: ServerErrorContext };
 
-export function respondServerError(options: RespondServerError) {
+export function respondServerError(options: RespondServerErrorOptions) {
   const status = STATUS_CODE.InternalServerError;
 
   return respondHtmlMaybe({ ...options, status });

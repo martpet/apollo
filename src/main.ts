@@ -1,9 +1,7 @@
+import { errorMid } from "@/middleware/error-mid.tsx";
 import { PORT } from "@/shared/consts.ts";
-import { ServerErrorPage } from "@/shared/jsx/ServerErrorPage.tsx";
-import { createErrorMiddleware, serve } from "@lib/serve";
+import { serve } from "@lib/serve";
 import { defaultHandler } from "./handler.ts";
-
-const errorMid = createErrorMiddleware(ServerErrorPage);
 
 serve({
   port: PORT,
