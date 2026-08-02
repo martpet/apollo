@@ -1,3 +1,10 @@
 noscript {
   color: red;
 }
+
+html.waiting {
+  &,
+  * {
+    cursor: wait;
+  }
+}

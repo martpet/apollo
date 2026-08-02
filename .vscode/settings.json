@@ -2,11 +2,21 @@
   "deno.enable": true,
   "deno.lint": true,
   "editor.formatOnSave": true,
+  "editor.defaultFormatter": "denoland.vscode-deno",
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[typescript]": {
-    "editor.defaultFormatter": "denoland.vscode-deno"
-  }
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  // glob pattern feature request https://github.com/denoland/vscode_deno/issues/834
+  "deno.disablePaths": [
+    "src/features/account/assets"
+  ]
 }
