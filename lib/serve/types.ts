@@ -6,12 +6,13 @@ export interface Context {
   req: Request;
   url: URL;
   method: Method;
+  error?: unknown;
 }
-
-export type ServerErrorContext = Context & { error: unknown };
 
 export type Handler<T = Response> = (ctx: Context) => MaybePromise<T>;
 
 export type JsxMaybeHandler = Handler<VNode | Response>;
 
 export type Middleware<T = Handler> = (handler: T) => Handler;
+
+export type SecFetchSite = "cross-site" | "same-origin" | "same-site" | "none";

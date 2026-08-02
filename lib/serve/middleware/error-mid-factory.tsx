@@ -4,7 +4,7 @@ import {
 } from "../response/res-server-error.ts";
 import { Middleware } from "../types.ts";
 
-type CreateErrorMidOptions = Partial<Pick<RespondServerErrorOptions, "html">>;
+type CreateErrorMidOptions = Pick<RespondServerErrorOptions, "html">;
 
 export function createErrorMid(
   options: CreateErrorMidOptions = {},
@@ -15,7 +15,6 @@ export function createErrorMid(
       return res;
     } catch (error) {
       console.log(error);
-
       return respondServerError({
         ctx: { ...ctx, error },
         html: options.html,

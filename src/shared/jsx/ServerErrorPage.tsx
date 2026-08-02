@@ -1,8 +1,8 @@
 import { ENV } from "@/shared/consts.ts";
-import { ServerErrorContext } from "@lib/serve";
+import { Context } from "@lib/serve";
 import { Page } from "./Page.tsx";
 
-export function ServerErrorPage(_props: unknown, ctx: ServerErrorContext) {
+export function ServerErrorPage(_props: unknown, ctx: Context) {
   const { error } = ctx;
 
   return (

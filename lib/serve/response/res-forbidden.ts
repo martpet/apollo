@@ -1,8 +1,8 @@
 import { STATUS_CODE } from "@std/http";
 import { respondHtmlMaybe, RespondHtmlMaybeOptions } from "./res-html-maybe.ts";
 
-type RespondNotFoundOptions = Omit<RespondHtmlMaybeOptions, "status">;
+export type RespondForbiddenOptions = Omit<RespondHtmlMaybeOptions, "status">;
 
-export function respondNotFound(options: RespondNotFoundOptions) {
+export function respondForbidden(options: RespondForbiddenOptions) {
   return respondHtmlMaybe({ ...options, status: STATUS_CODE.NotFound });
 }
