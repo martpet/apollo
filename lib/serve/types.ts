@@ -6,8 +6,9 @@ export interface Context {
   req: Request;
   url: URL;
   method: Method;
-  error?: Error;
 }
+
+export type ServerErrorContext = Context & { error: unknown };
 
 export type Handler<T = Response> = (ctx: Context) => MaybePromise<T>;
 

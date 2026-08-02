@@ -1,14 +1,15 @@
-import { Context } from "@lib/serve";
+import { ServerErrorContext } from "@lib/serve";
 import { getRequiredEnv } from "@lib/utils";
 import { Page } from "./Page.tsx";
 
-export function ServerErrorPage(_props: unknown, { error }: Context) {
+export function ServerErrorPage(_props: unknown, ctx: ServerErrorContext) {
+  const { error } = ctx;
   const envName = getRequiredEnv("ENV");
 
   return (
     <Page>
       <h1>Internal Server Error</h1>
-      {envName === "dev" && error && <pre>{error.stack}</pre>}
+      {envName === "dev" && error instanceof Error && <pre>{error.stack}</pre>}
     </Page>
   );
 }
