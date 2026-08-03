@@ -1,6 +1,6 @@
+import { handleCreateAccount } from "@/features/accounts/create-account.tsx";
 import { handleNotFound } from "@/shared/handlers/not-found.tsx";
 import { Context, handleAsset } from "@lib/serve";
-import { handleCreateAccount } from "./create-account.tsx";
 
 export function handleAccount(ctx: Context) {
   const { pathname } = ctx.url;

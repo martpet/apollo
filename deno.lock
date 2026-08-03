@@ -17,6 +17,7 @@
     "jsr:@std/path@^1.1.5": "1.1.6",
     "jsr:@std/path@^1.1.6": "1.1.6",
     "jsr:@std/streams@^1.1.1": "1.1.1",
+    "jsr:@std/ulid@1": "1.0.0",
     "npm:@hexagon/base64@^1.1.27": "1.1.28",
     "npm:@levischuck/tiny-cbor@~0.2.2": "0.2.11",
     "npm:@peculiar/asn1-android@^2.6.0": "2.8.0",
@@ -96,6 +97,9 @@
     },
     "@std/streams@1.1.1": {
       "integrity": "92556d350e537e9dce527a6d08f6f15be3ff65e656079dea69d15252187c7613"
+    },
+    "@std/ulid@1.0.0": {
+      "integrity": "d41c3d27a907714413649fee864b7cde8d42ee68437d22b79d5de4f81d808780"
     }
   },
   "npm": {
@@ -286,6 +290,7 @@
       "jsr:@std/fs@1",
       "jsr:@std/http@1",
       "jsr:@std/path@1",
+      "jsr:@std/ulid@1",
       "npm:preact-render-to-string@6",
       "npm:preact@*",
       "npm:preact@10"

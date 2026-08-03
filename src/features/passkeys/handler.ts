@@ -1,6 +1,6 @@
+import { handleGenerateRegOptions } from "@/features/passkeys/generate-reg-options.ts";
 import { handleNotFound } from "@/shared/handlers/not-found.tsx";
 import { Context, handleAsset } from "@lib/serve";
-import { handleGenerateRegOptions } from "./generate-reg-options.ts";
 
 export function handlePasskeys(ctx: Context) {
   const { pathname } = ctx.url;

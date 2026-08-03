@@ -22,6 +22,7 @@
     "@std/http": "jsr:@std/http@1",
     "@std/path": "jsr:@std/path@1",
     "@std/dotenv": "jsr:@std/dotenv@0",
+    "@std/ulid": "jsr:@std/ulid@^1",
     "preact": "npm:preact@10",
     "preact-render-to-string": "npm:preact-render-to-string@6"
   },

@@ -1,6 +1,6 @@
-import { handleAccount } from "@/features/accounts/handlers/handler.tsx";
+import { handleAccount } from "@/features/accounts/handler.tsx";
 import { handleHomePage } from "@/features/homepage/handler.tsx";
-import { handlePasskeys } from "@/features/passkeys/handlers/handler.ts";
+import { handlePasskeys } from "@/features/passkeys/handler.ts";
 import { handleNotFound } from "@/shared/handlers/not-found.tsx";
 import { Context, handleAsset } from "@lib/serve";
 
