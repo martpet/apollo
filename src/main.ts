@@ -1,10 +1,10 @@
+import { PORT } from "@/etc/consts.ts";
 import { csrfMid, errorMid } from "@/etc/mids.tsx";
-import { PORT } from "@/shared/consts.ts";
 import { serve } from "@lib/serve";
-import { defaultHandler } from "./handler.ts";
+import { rootHandler } from "./handler.ts";
 
 serve({
   port: PORT,
-  handler: defaultHandler,
+  handler: rootHandler,
   middlewares: [errorMid, csrfMid],
 });

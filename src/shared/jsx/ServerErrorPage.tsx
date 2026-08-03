@@ -1,4 +1,4 @@
-import { ENV } from "@/shared/consts.ts";
+import { ENV } from "@/etc/consts.ts";
 import { Context } from "@lib/serve";
 import { Page } from "./Page.tsx";
 

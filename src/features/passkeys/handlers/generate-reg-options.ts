@@ -1,12 +1,11 @@
 import { Context, respondMethodAllowed } from "@lib/serve";
-import { HomePage } from "./jsx/HomePage.tsx";
 
-export function handleHomePage(ctx: Context) {
+export function handleGenerateRegOptions(ctx: Context) {
   const { method } = ctx;
 
   if (method !== "GET") {
     return respondMethodAllowed("GET");
   }
 
-  return <HomePage />;
+  return new Response();
 }

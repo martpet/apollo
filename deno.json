@@ -12,10 +12,12 @@
       "env": true
     }
   },
+  "unstable": ["kv"],
   "imports": {
     "@/": "./src/",
     "@lib/serve": "./lib/serve/mod.ts",
     "@lib/utils": "./lib/utils/mod.ts",
+    "@simplewebauthn/server": "jsr:@simplewebauthn/server@^13.3.2",
     "@std/fs": "jsr:@std/fs@^1",
     "@std/http": "jsr:@std/http@1",
     "@std/path": "jsr:@std/path@1",
