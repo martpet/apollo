@@ -21,11 +21,10 @@ console.log(`🔨 Building binary for ${envBadge}...`);
 try {
   await runCommand("deno", [
     "compile",
-    "-P",
-    "-o",
-    outputBinary,
-    `--app-name=${appName}`,
+    "--permission-set",
+    `--output=${outputBinary}`,
     `--target=${targetPlatform}`,
+    `--app-name=${appName}`,
     "--include",
     "src/", // needed for "assests/" (glob pattern https://github.com/denoland/deno/issues/35037)
     "src/main.ts",
