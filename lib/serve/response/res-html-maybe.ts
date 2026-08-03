@@ -1,5 +1,5 @@
+import { Optional } from "@lib/utils";
 import { STATUS_CODE, STATUS_TEXT } from "@std/http";
-import { Optional } from "../../utils/types.ts";
 import { checkAcceptHtml } from "../request/accept-html.ts";
 import { respondHtml, RespondHtmlOptions } from "./res-html.ts";
 

@@ -6,7 +6,7 @@ export function handleHomePage(ctx: Context) {
 
   if (method === "GET") {
     return <HomePage />;
+  } else {
+    return respondMethodAllowed("GET");
   }
-
-  return respondMethodAllowed("GET");
 }

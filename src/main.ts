@@ -1,5 +1,5 @@
+import { csrfMid, errorMid } from "@/etc/mids.tsx";
 import { PORT } from "@/shared/consts.ts";
-import { csrfMid, errorMid } from "@/shared/middleware.tsx";
 import { serve } from "@lib/serve";
 import { defaultHandler } from "./handler.ts";
 
