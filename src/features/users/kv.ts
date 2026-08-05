@@ -16,10 +16,12 @@ export function setUser(user: User, atomic = kv.atomic()) {
     .set([USERS_BY_USERNAME, user.username], user);
 }
 
-export function getUser(id: string) {
-  return kv.get<User>([USERS_BY_ID, id]);
+export async function getUser(id: string) {
+  const entry = await kv.get<User>([USERS_BY_ID, id]);
+  return entry.value;
 }
 
-export function getUserByUsername(username: string) {
-  return kv.get<User>([USERS_BY_USERNAME, username]);
+export async function getUserByUsername(username: string) {
+  const entry = await kv.get<User>([USERS_BY_USERNAME, username]);
+  return entry.value;
 }

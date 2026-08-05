@@ -1,12 +1,12 @@
 import { Context, respondMethodAllowed } from "@lib/serve";
-import { HomePage } from "./jsx/HomePage.tsx";
+import { CreateAccountPage } from "../jsx/CreateAccountPage.tsx";
 
-export function handleHomePage(ctx: Context) {
+export function handleCreateAccountPage(ctx: Context) {
   const { method } = ctx;
 
   if (method !== "GET") {
     return respondMethodAllowed("GET");
   }
 
-  return <HomePage />;
+  return <CreateAccountPage />;
 }

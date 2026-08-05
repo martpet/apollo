@@ -1,10 +1,25 @@
-import { setFormInProgress } from "/assets/main.js";
+import { fetchJson, setFormInProgress } from "/assets/utils.js";
 
-const regForm = document.getElementById("reg-form");
+const form = document.getElementById("reg-form");
 
-regForm.addEventListener("submit", async (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  setFormInProgress(regForm);
-  await fetch("/account/create", { method: "PUT" });
-  setFormInProgress(regForm, false);
+  setFormInProgress(form);
+
+  try {
+    const passkeyOptions = await fetchJson({
+      path: "/account/create/flow-start",
+      method: "POST",
+      data: { username: form.username.value },
+    });
+  } catch (error) {
+    setFormInProgress(form, false);
+
+    if (!navigator.onLine) {
+      alert("Network is offline");
+    } else {
+      alert(error.message);
+      console.error(error);
+    }
+  }
 });

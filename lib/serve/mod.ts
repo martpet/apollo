@@ -5,6 +5,7 @@ export * from "./middleware/csrf-mid-factory.ts";
 export * from "./middleware/error-mid-factory.tsx";
 export * from "./middleware/jsx-mid.ts";
 export * from "./request/accept-html.ts";
+export * from "./response/res-bad-request.ts";
 export * from "./response/res-forbidden.ts";
 export * from "./response/res-html.ts";
 export * from "./response/res-method-allowed.ts";

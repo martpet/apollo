@@ -15,6 +15,7 @@
   },
   "deno.disablePaths": [
     // glob pattern: https://github.com/denoland/vscode_deno/issues/834
+    "src/assets",
     "src/features/accounts/assets"
   ]
 }

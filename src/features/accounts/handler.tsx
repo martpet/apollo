@@ -1,6 +1,8 @@
-import { handleCreateAccount } from "@/features/accounts/create-account.tsx";
 import { handleNotFound } from "@/shared/handlers/not-found.tsx";
 import { Context, handleAsset } from "@lib/serve";
+import { handleCreateAccountFlowEnd } from "./handlers/create-account-flow-end.ts";
+import { handleCreateAccountFlowStart } from "./handlers/create-account-flow-start.ts";
+import { handleCreateAccountPage } from "./handlers/create-account-page.tsx";
 
 export function handleAccount(ctx: Context) {
   const { pathname } = ctx.url;
@@ -10,7 +12,15 @@ export function handleAccount(ctx: Context) {
   }
 
   if (pathname === "/account/create") {
-    return handleCreateAccount(ctx);
+    return handleCreateAccountPage(ctx);
+  }
+
+  if (pathname === "/account/create/flow-start") {
+    return handleCreateAccountFlowStart(ctx);
+  }
+
+  if (pathname === "/account/create/flow-end") {
+    return handleCreateAccountFlowEnd(ctx);
   }
 
   return handleNotFound(ctx);

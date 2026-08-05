@@ -1,10 +1,28 @@
-noscript {
-  color: red;
+body {
+  font-family: system-ui;
+  font-size: 15px;
 }
 
 html.waiting {
   &,
   * {
     cursor: wait;
+  }
+}
+
+noscript {
+  color: red;
+}
+
+form.basic {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 2em;
+  label {
+    margin-bottom: 0.5em;
+  }
+  button {
+    margin-top: 1em;
   }
 }
