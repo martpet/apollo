@@ -1,5 +1,5 @@
 import { Method } from "@std/http/unstable-method";
-import { jsxMid } from "./middleware/jsx-mid.ts";
+import { jsxMid } from "./middlewares/jsx-mid.ts";
 import { JsxMaybeHandler, Middleware } from "./types.ts";
 
 interface ServeOptions {
