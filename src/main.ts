@@ -1,4 +1,4 @@
-import { csrfMid, errorMid } from "@/etc/mids.tsx";
+import { csrfMid, errorMid } from "@/etc/middlewares.tsx";
 import { serve } from "@lib/serve";
 import { rootHandler } from "./handler.ts";
 
