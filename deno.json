@@ -1,8 +1,8 @@
 {
   "tasks": {
     "dev": "deno --permission-set --env-file --watch src/main.ts",
-    "build": "deno -A scripts/build.ts",
-    "deploy": "deno -A scripts/deploy.ts"
+    "build": "deno -A tasks/build.ts",
+    "deploy": "deno -A tasks/deploy.ts"
   },
   "permissions": {
     "default": {

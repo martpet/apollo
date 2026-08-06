@@ -12,7 +12,7 @@ const envsListFmt = new Intl.ListFormat("en", {
 
 export async function loadEnv(taskName: "build" | "deploy") {
   const envName = Deno.args[0] ?? defaultEnv;
-  const envPath = `./scripts/env/.env.${taskName}.${envName}`;
+  const envPath = `./tasks/envs/.env.${taskName}.${envName}`;
 
   if (!envs.includes(envName as Env)) {
     const envsList = envsListFmt.format(envs.map((item) => `'${item}'`));
