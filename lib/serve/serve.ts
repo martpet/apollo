@@ -1,15 +1,15 @@
 import { Method } from "@std/http/unstable-method";
+import { PORT } from "./consts.ts";
 import { jsxMid } from "./middlewares/jsx-mid.ts";
 import { JsxMaybeHandler, Middleware } from "./types.ts";
 
 interface ServeOptions {
-  port: number;
   handler: JsxMaybeHandler;
   middlewares?: Middleware[];
 }
 
-export function serve({ port, handler, middlewares = [] }: ServeOptions) {
-  Deno.serve({ port }, (request) => {
+export function serve({ handler, middlewares = [] }: ServeOptions) {
+  Deno.serve({ port: PORT }, (request) => {
     const composed = middlewares.reduceRight(
       (prev, current) => current(prev),
       jsxMid(handler),
