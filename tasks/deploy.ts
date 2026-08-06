@@ -1,7 +1,6 @@
-import { getRequiredEnv } from "@lib/utils";
+import { getRequiredEnv, runCommand } from "@lib/utils";
 import { exists } from "@std/fs/exists";
 import { loadEnv } from "./utils/load-env.ts";
-import { runCommand } from "./utils/run-command.ts";
 
 const envName = await loadEnv("deploy");
 const envBadge = `[${envName.toUpperCase()}]`;

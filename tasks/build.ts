@@ -1,6 +1,5 @@
-import { getRequiredEnv } from "@lib/utils";
+import { getRequiredEnv, runCommand } from "@lib/utils";
 import { loadEnv } from "./utils/load-env.ts";
-import { runCommand } from "./utils/run-command.ts";
 
 const envName = await loadEnv("build");
 const envBadge = `[${envName.toUpperCase()}]`;
