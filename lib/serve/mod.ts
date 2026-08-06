@@ -1,4 +1,3 @@
-export * from "./consts.ts";
 export * from "./handlers/asset-handler.ts";
 export * from "./middlewares/cache-mid.ts";
 export * from "./middlewares/csrf-mid-factory.ts";

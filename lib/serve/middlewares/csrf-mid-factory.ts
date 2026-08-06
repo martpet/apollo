@@ -1,10 +1,12 @@
 import { HEADER } from "@std/http/unstable-header";
-import { SAFE_METHODS } from "../consts.ts";
+
 import {
   respondForbidden,
   RespondForbiddenOptions,
 } from "../response/res-forbidden.ts";
 import { Middleware, SecFetchSite } from "../types.ts";
+
+export const SAFE_METHODS = new Set(["GET", "HEAD", "OPTIONS"]);
 
 export interface CreateCsrfMidOptions
   extends Pick<RespondForbiddenOptions, "html"> {
