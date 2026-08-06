@@ -11,27 +11,27 @@ export interface CreateCsrfMidOptions
   origin?:
     | string
     | string[]
-    | ((origin: string, req: Request) => boolean);
+    | ((origin: string, request: Request) => boolean);
 
   secFetchSite?:
     | SecFetchSite
     | SecFetchSite[]
-    | ((value: SecFetchSite, req: Request) => boolean);
+    | ((value: SecFetchSite, request: Request) => boolean);
 }
 
 export function createCsrfMid(
   options: CreateCsrfMidOptions = {},
 ): Middleware {
   return (next) => (ctx) => {
-    const { req, url } = ctx;
+    const { request, url } = ctx;
 
-    if (SAFE_METHODS.has(req.method)) {
+    if (SAFE_METHODS.has(request.method)) {
       return next(ctx);
     }
 
     const allowedSecFetch = options.secFetchSite ?? ["same-origin"];
-    const originHeader = req.headers.get(HEADER.Origin);
-    const secFetchSiteHeader = req.headers.get("sec-fetch-site") as
+    const originHeader = request.headers.get(HEADER.Origin);
+    const secFetchSiteHeader = request.headers.get("sec-fetch-site") as
       | SecFetchSite
       | null;
 
@@ -39,7 +39,7 @@ export function createCsrfMid(
 
     if (secFetchSiteHeader) {
       if (typeof allowedSecFetch === "function") {
-        secFetchOk = allowedSecFetch(secFetchSiteHeader, req);
+        secFetchOk = allowedSecFetch(secFetchSiteHeader, request);
       } else if (Array.isArray(allowedSecFetch)) {
         secFetchOk = allowedSecFetch.includes(secFetchSiteHeader);
       } else {
@@ -51,7 +51,7 @@ export function createCsrfMid(
 
     if (originHeader) {
       if (typeof options.origin === "function") {
-        originOk = options.origin(originHeader, req);
+        originOk = options.origin(originHeader, request);
       } else if (Array.isArray(options.origin)) {
         originOk = options.origin.includes(originHeader);
       } else if (options.origin) {

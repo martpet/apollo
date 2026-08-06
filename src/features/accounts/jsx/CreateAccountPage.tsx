@@ -7,22 +7,22 @@ export function CreateAccountPage() {
       htmlHead={
         <>
           <script type="module" src="/account/assets/create-account.js" />
+          {/* <link rel="modulepreload" href="/passkeys/assets/simplewebauthn.js" /> */}
           <link rel="modulepreload" href="/assets/utils.js" />
         </>
       }
     >
       <h1>Create an Account</h1>
 
-      <noscript>JavaScript is required for account creation.</noscript>
+      <noscript>Please enable JavaScript to create an account.</noscript>
 
       <form id="reg-form" class="basic">
         <label for="username">Username:</label>
         <input id="username" required pattern={USERNAME_PATTERN} />
         <button>Create</button>
       </form>
-      <p>
-        <a href="/">Back to home</a>
-      </p>
+
+      <a href="/">Back to home</a>
     </Page>
   );
 }

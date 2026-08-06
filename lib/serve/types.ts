@@ -3,7 +3,7 @@ import { Method } from "@std/http/unstable-method";
 import { VNode } from "preact";
 
 export interface Context {
-  req: Request;
+  request: Request;
   url: URL;
   method: Method;
   error?: unknown;

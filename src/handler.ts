@@ -1,5 +1,6 @@
 import { handleAccount } from "@/features/accounts/handler.tsx";
 import { handleHomePage } from "@/features/pages/homepage/handler.tsx";
+import { handlePasskeys } from "@/features/passkeys/handler.ts";
 import { handleNotFound } from "@/shared/handlers/not-found.tsx";
 import { Context, handleAsset } from "@lib/serve";
 
@@ -16,6 +17,10 @@ export function rootHandler(ctx: Context) {
 
   if (pathname.startsWith("/account/")) {
     return handleAccount(ctx);
+  }
+
+  if (pathname.startsWith("/passkeys/")) {
+    return handlePasskeys(ctx);
   }
 
   return handleNotFound(ctx);

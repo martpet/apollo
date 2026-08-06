@@ -4,14 +4,14 @@ import { basename, join } from "@std/path";
 import { Context } from "../types.ts";
 
 export function handleAsset(ctx: Context, meta: ImportMeta) {
-  const { method } = ctx.req;
+  const { request, url } = ctx;
 
-  if (method !== "GET") {
+  if (request.method !== "GET") {
     return respondMethodAllowed("GET");
   }
 
-  const fileName = basename(ctx.url.pathname);
+  const fileName = basename(url.pathname);
   const filePath = join(meta.dirname!, "assets", fileName);
 
-  return serveFile(ctx.req, filePath);
+  return serveFile(request, filePath);
 }

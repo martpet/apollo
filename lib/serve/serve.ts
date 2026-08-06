@@ -9,16 +9,16 @@ interface ServeOptions {
 }
 
 export function serve({ port, handler, middlewares = [] }: ServeOptions) {
-  Deno.serve({ port }, (req) => {
+  Deno.serve({ port }, (request) => {
     const composed = middlewares.reduceRight(
       (prev, current) => current(prev),
       jsxMid(handler),
     );
 
     const context = {
-      req,
-      url: new URL(req.url),
-      method: req.method as Method,
+      request,
+      url: new URL(request.url),
+      method: request.method as Method,
     };
 
     return composed(context);

@@ -1,18 +1,24 @@
-import { generatePasskeyRegOptions } from "@/features/passkeys/reg-options.ts";
+import { generatePasskeyRegOptions } from "@/features/passkeys/reg-flow-options.ts";
+import { patchCurrentSession } from "@/features/sessions/current-session.ts";
 import { USERNAME_PATTERN } from "@/features/users/consts.ts";
 import { getUserByUsername } from "@/features/users/kv.ts";
 import { Context, respondBadRequest, respondMethodAllowed } from "@lib/serve";
 
 export async function handleCreateAccountFlowStart(ctx: Context) {
-  const { req, method } = ctx;
+  const { request, method } = ctx;
 
   if (method !== "POST") {
     return respondMethodAllowed("POST");
   }
 
-  const { username } = await req.json();
+  const { username } = await request.json();
   if (!username) {
     return respondBadRequest("Username is missing");
+  }
+
+  const usernameRegex = new RegExp(USERNAME_PATTERN);
+  if (!usernameRegex.test(username)) {
+    return respondBadRequest("Username format is bad");
   }
 
   const user = await getUserByUsername(username);
@@ -20,12 +26,12 @@ export async function handleCreateAccountFlowStart(ctx: Context) {
     return Response.json({ error: `Username "${username}" is taken` });
   }
 
-  const usernameRegex = new RegExp(USERNAME_PATTERN);
-  if (!usernameRegex.test(username)) {
-    return Response.json({ error: "Username format is bad" });
-  }
+  const passkeyOptions = await generatePasskeyRegOptions(username);
+  const response = Response.json(passkeyOptions);
 
-  const regOptions = await generatePasskeyRegOptions(username);
+  const sessionPatch = { passkeyChallenge: passkeyOptions.challenge };
+  const atomic = await patchCurrentSession(sessionPatch, request, response);
+  await atomic.commit();
 
-  return Response.json(regOptions);
+  return response;
 }

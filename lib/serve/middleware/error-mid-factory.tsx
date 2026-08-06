@@ -11,8 +11,8 @@ export function createErrorMid(
 ): Middleware {
   return (next) => async (ctx) => {
     try {
-      const res = await next(ctx);
-      return res;
+      const response = await next(ctx);
+      return response;
     } catch (error) {
       console.log(error);
       return respondServerError({
