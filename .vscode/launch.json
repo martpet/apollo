@@ -7,13 +7,14 @@
       "type": "node",
       "program": "${workspaceFolder}/src/main.ts",
       "cwd": "${workspaceFolder}",
-      "env": {},
+      "env": {
+        "ENV": "dev"
+      },
       "runtimeExecutable": "/Users/martin/.deno/bin/deno",
       "runtimeArgs": [
         "run",
         "--inspect-wait",
         "--allow-all",
-        "--env-file",
         "--unstable-kv"
       ],
       "attachSimplePort": 9229

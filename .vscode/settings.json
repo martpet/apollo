@@ -13,8 +13,7 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "deno.disablePaths": [
-    // glob pattern: https://github.com/denoland/vscode_deno/issues/834
+  "deno.disablePaths": [ // glob pattern feature request: https://github.com/denoland/vscode_deno/issues/834
     "src/assets",
     "src/features/accounts/assets"
   ]
