@@ -1,3 +1,3 @@
-import { KV_PATH } from "@/etc/consts.ts";
+const kvPath = Deno.env.get("KV_PATH") || "./db/kv.sqlite";
 
-export const kv = await Deno.openKv(KV_PATH);
+export const kv = await Deno.openKv(kvPath);
