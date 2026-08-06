@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "dev": "deno --permission-set --env-file --watch src/main.ts",
+    "dev": "ENV=dev deno --permission-set --watch src/main.ts",
     "build": "deno -A tasks/build.ts",
     "deploy": "deno -A tasks/deploy.ts"
   },

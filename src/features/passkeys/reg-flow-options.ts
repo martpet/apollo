@@ -1,10 +1,12 @@
+import { WEBSITE_NAME } from "@/etc/consts.ts";
 import { generateRegistrationOptions } from "@simplewebauthn/server";
-import { RP_ID, RP_NAME } from "./consts.ts";
 
-export function generatePasskeyRegOptions(username: string) {
+export function generatePasskeyRegOptions(
+  { url, username }: { url: URL; username: string },
+) {
   return generateRegistrationOptions({
-    rpName: RP_NAME,
-    rpID: RP_ID,
+    rpName: WEBSITE_NAME,
+    rpID: url.hostname,
     userName: username,
     attestationType: "none",
     authenticatorSelection: {

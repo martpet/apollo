@@ -5,7 +5,7 @@ import { getUserByUsername } from "@/features/users/kv.ts";
 import { Context, respondBadRequest, respondMethodAllowed } from "@lib/serve";
 
 export async function handleCreateAccountFlowStart(ctx: Context) {
-  const { request, method } = ctx;
+  const { request, method, url } = ctx;
 
   if (method !== "POST") {
     return respondMethodAllowed("POST");
@@ -26,7 +26,7 @@ export async function handleCreateAccountFlowStart(ctx: Context) {
     return Response.json({ error: `Username "${username}" is taken` });
   }
 
-  const passkeyOptions = await generatePasskeyRegOptions(username);
+  const passkeyOptions = await generatePasskeyRegOptions({ url, username });
   const response = Response.json(passkeyOptions);
 
   const sessionPatch = { passkeyChallenge: passkeyOptions.challenge };
