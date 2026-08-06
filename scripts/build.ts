@@ -1,19 +1,12 @@
 import { getRequiredEnv } from "@lib/utils";
-import { load } from "@std/dotenv";
-import { getEnvArg } from "./utils/env-arg.ts";
+import { loadEnv } from "./utils/load-env.ts";
 import { runCommand } from "./utils/run-command.ts";
 
-const envName = getEnvArg();
-
-await load({
-  envPath: `scripts/env/.env.build.${envName}`,
-  export: true,
-});
-
+const envName = await loadEnv("build");
+const envBadge = `[${envName.toUpperCase()}]`;
 const appName = getRequiredEnv("APP_NAME");
 const targetPlatform = getRequiredEnv("TARGET_PLATFORM");
-const outputBinary = `dist/bin-${envName}`;
-const envBadge = `[${envName.toUpperCase()}]`;
+const outputBinary = `./dist/bin-${envName}`;
 
 console.time("✨ Total build time");
 console.log(`🔨 Building binary for ${envBadge}...`);
@@ -25,7 +18,7 @@ try {
     `--output=${outputBinary}`,
     `--target=${targetPlatform}`,
     `--app-name=${appName}`,
-    "--include=src/", // needed for "assests/" (glob pattern https://github.com/denoland/deno/issues/35037)
+    "--include=src/", // used for "assests" dirs (glob pattern feature request https://github.com/denoland/deno/issues/35037)
     "src/main.ts",
   ]);
 

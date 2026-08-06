@@ -1,22 +1,15 @@
 import { getRequiredEnv } from "@lib/utils";
-import { load } from "@std/dotenv";
 import { exists } from "@std/fs/exists";
-import { getEnvArg } from "./utils/env-arg.ts";
+import { loadEnv } from "./utils/load-env.ts";
 import { runCommand } from "./utils/run-command.ts";
 
-const envName = getEnvArg();
-
-await load({
-  envPath: `scripts/env/.env.deploy.${envName}`,
-  export: true,
-});
-
+const envName = await loadEnv("deploy");
+const envBadge = `[${envName.toUpperCase()}]`;
 const remoteHost = getRequiredEnv("REMOTE_HOST");
 const remoteBinary = getRequiredEnv("REMOTE_BINARY");
-const service = getRequiredEnv("SERVICE");
-const remoteBinaryTemp = `${remoteBinary}_${(new Date()).toISOString()}`;
+const remoteService = getRequiredEnv("REMOTE_SERVICE");
+const remoteBinaryTemp = `${remoteBinary}-temp`;
 const localBinary = `dist/bin-${envName}`;
-const envBadge = `[${envName.toUpperCase()}]`;
 
 if (!await exists(localBinary)) {
   console.log(`Error: File '${localBinary}' doesn't exist!`);
@@ -37,7 +30,7 @@ try {
   ]);
 
   console.log(
-    `⚙️  Updating file and restarting '${service}' service on '${remoteHost}'...`,
+    `⚙️  Updating file and restarting '${remoteService}' service on '${remoteHost}'...`,
   );
 
   await runCommand("ssh", [
@@ -45,7 +38,7 @@ try {
     remoteHost,
     `
       mv ${remoteBinaryTemp} ${remoteBinary}
-      sudo systemctl restart ${service}
+      sudo systemctl restart ${remoteService}
     `,
   ]);
 
